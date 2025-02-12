@@ -1,29 +1,18 @@
-﻿﻿﻿﻿<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Angry Birds Cannon 3</title>
-    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-    <script src="https://apis.google.com/js/platform.js"></script>   
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        ruffle-player {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/gh/leaningtech/cheerpx-for-flash@latest/loader.js"></script>
 </head>
 <body>
-    <!-- Contenedor del juego -->
-    <div class="game-container" id="gameContainer">
-        <embed src="http://angrybirdsgames.com/angry-birds-valentines-day/angry-birds-valentines-day-7100.swf" id="gameEmbed" width="100%" height="100%">
+    <div id="flash-container">
+        <embed src="http://angrybirdsgames.com/angry-birds-valentines-day/angry-birds-valentines-day-7100.swf" width="800" height="600">
+    </div>
+    <script>
+        const cheerpx = new CheerPXLoader();
+        cheerpx.load("game.swf", document.getElementById("flash-container"));
+    </script>
 </body>
 </html>
