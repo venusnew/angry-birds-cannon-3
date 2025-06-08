@@ -3,24 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <title>Angry Birds Valentines Day</title>
-  <!-- Carga la versión nightly del 2025-06-06 desde el CDN oficial -->
-    <style>
-    body {
-      background: #111;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-    }
-    ruffle-player {
-      width: 800px;
-      height: 600px;
-    }
+  <!-- Cargamos Ruffle desde el CDN oficial -->
+  <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+  <style>
+    body { background: #000; margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
+    #container { width: 550px; height: 400px; }
   </style>
 </head>
 <body>
-  <!-- Aquí se carga el archivo SWF -->
-  <ruffle-player src="angry-birds-valentines-day-7100.swf"></ruffle-player>
+  <!-- Aquí se insertará el reproductor -->
+  <div id="container"></div>
+
+  <script>
+    // Reemplazamos swfobject.embedSWF con una llamada compatible con Ruffle
+    var swfobject = {};
+
+    swfobject.embedSWF = function(url, contId, width, height) {
+      const container = document.getElementById(contId);
+      const ruffle = window.RufflePlayer.newest();
+      const player = ruffle.createPlayer();
+
+      // Ajustes de tamaño
+      player.style.width = width + "px";
+      player.style.height = height + "px";
+      container.appendChild(player);
+
+      // Cargamos el .swf
+      player.load({ url: url });
+    };
+
+    // Llamada a la función con los parámetros del juego
+    swfobject.embedSWF(
+      "angry-birds-valentines-day-7100.swf",    // URL o ruta del SWF
+      "container",       // ID del contenedor en el HTML
+      550,               // ancho en píxeles
+      400                // alto en píxeles
+    );
+  </script>
 </body>
 </html>
